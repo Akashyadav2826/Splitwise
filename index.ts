@@ -31,10 +31,10 @@ app.use('/api/groups/:groupId/expenses', expenseRoutes);
 app.use('/api/groups/:groupId/settlements', settlementRoutes);
 app.use('/api/expenses/:expenseId/chats', chatRoutes);
 
-const clientDist = path.join(__dirname, '../../client/dist');
-app.use(express.static(clientDist));
-app.get('*', (_req, res) => {
-  res.sendFile(path.join(clientDist, 'index.html'));
+app.get("/", (_req, res) => {
+  res.json({
+    status: "Backend is running 🚀"
+  });
 });
 
 app.use(errorHandler);
